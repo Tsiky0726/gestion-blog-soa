@@ -13,7 +13,7 @@ app.use(bodyparser.json());
 
 //Use routes
 app.use('/soa' , utilisateurRouter);
-app.use('/soa/blog' , articleRouter) ;
+app.use('/soa' , articleRouter);
 
 
 app.listen(port, () => {
