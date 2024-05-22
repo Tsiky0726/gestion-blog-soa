@@ -537,13 +537,14 @@
                 "tags":["utilisateur"],
                 "summary":"renvoie un utilisateur",
                 "description":"renvoie un utilisateur",
-                "parameters":[
+                "parameters": [
                     {
-                        "name" : "IdUtilusateur",
-                        "required" : true,
-                        "in" : "paths",
-                        "description" : "Identifiant de l'utilisateur ",
-                        "type" : "integer"
+                        "in": "paths",
+                        "name": "IdUtilusateur",
+                        "required": true,
+                        "schema": {
+                            "type":"integer"
+                        }
                     }
                 ],
                 "responses":{
