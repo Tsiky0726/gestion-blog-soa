@@ -246,6 +246,15 @@
                 "tags":["article"],
                 "summary":"renvoie une article",
                 "description":"renvoie une article",
+                "parameters":[
+                    {
+                        "name" : "IdArticle",
+                        "required" : true,
+                        "in" : "paths",
+                        "description" : "Identifiant de l'article",
+                        "type" : "integer"
+                    }
+                ],
                 "responses":{
                     "200":{
                         "description":"renvoie une article",
@@ -286,7 +295,299 @@
                 }
             }
 
+        },
+        "/utilisateurs":{
+            "get":{
+                "tags":["utlisateur"],
+                "summary":"renvoie les utilisateurs",
+                "description":"renvoie les utilisateurs existant",
+                "responses":{
+                    "200":{
+                        "description":"renvoie les utilisateurs",
+                        "schema":{
+                            "type":"array",
+                            "items":{
+                                "type":"object",
+                                "properties":{
+                                    "IdUtilusateur":{
+                                        "type":"integer"
+                                    },
+                                    "nomUtilisateur":{
+                                        "type":"string"
+                                    },
+                                    "mail":{
+                                        "type":"string"
+                                    },
+                                    "motdepasse":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"error",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "error":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        },
+        "/utilisateur":{
+            "post":{
+                "tags":["utilisateur"],
+                "summary":"creer un utilisateur",
+                "description":"Creation d'un utilisateur",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type":"object",
+                            "properties":{
+                                "nomUtilisateur":{
+                                    "type":"string"
+                                },
+                                "mail":{
+                                    "type":"string",
+                                    "exemple":"mon-utilisateur"
+                                },
+                                "motdepasse":{
+                                    "type":"string",
+                                    "exemple":"0221"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"renvoie les donnees sur l'utilisateur cree",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "IdUtilusateur":{
+                                    "type":"integer"
+                                },
+                                "nomUtilisateur":{
+                                    "type":"string"
+                                },
+                                "mail":{
+                                    "type":"string"
+                                },
+                                "motdepasse":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"error",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "error":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }      
+
+            }
+        },
+
+        "utilisateur/{id}":{
+            "delete":{
+                "tags":["utilisateur"],
+                "summary":"supprimer un utilisateur",
+                "description":"supprimer un utilisateur",
+                "parameters":[
+                    {
+                        "name" : "IdUtilusateur",
+                        "required" : true,
+                        "in" : "paths",
+                        "description" : "Id de l'utilisateur",
+                        "type" : "integer"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"renvoie les donnees sur l'utilisateur supprimée",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "IdUtilusateur":{
+                                    "type":"integer"
+                                },
+                                "mail":{
+                                    "type":"string"
+                                },
+                                "nomUtilisateur":{
+                                    "type":"string"
+                                },
+                                "motdepasse":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"error",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "error":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put":{
+                "tags":["utilisateur"],
+                "summary":"mise a jour un utilisateur",
+                "description":"mise a jour d un utilisateur",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type":"object",
+                            "properties":{
+                                "nomUtilisateur":{
+                                    "type":"string"
+                                },
+                                "mail":{
+                                    "type":"string"
+                                },
+                                "motdepasse":{
+                                    "type":"string"
+                                }
+
+                            }
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"renvoie l'utilisateur mis a jour",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "IdUtilusateur":{
+                                    "type":"integer"
+                                },
+                                "nomUtilisateur":{
+                                    "type":"string"
+                                },
+                                "mail":{
+                                    "type":"string"
+                                },
+                                "motdepasse":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"error",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "error":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                }                
+            },
+            "get":{
+                "tags":["utilisateur"],
+                "summary":"renvoie un utilisateur",
+                "description":"renvoie un utilisateur",
+                "parameters":[
+                    {
+                        "name" : "IdUtilusateur",
+                        "required" : true,
+                        "in" : "paths",
+                        "description" : "Identifiant de l'utilisateur ",
+                        "type" : "integer"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"renvoie un utilisateur",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "IdUtilusateur":{
+                                    "type":"integer"
+                                },
+                                "nomUtilisateur":{
+                                    "type":"string"
+                                },
+                                "mail":{
+                                    "type":"string"
+                                },
+                                "motdepasse":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"error",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "error":{
+                                    "type":"object",
+                                    "properties":{
+                                        "name":{
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
         }
+
     
     }
 }
