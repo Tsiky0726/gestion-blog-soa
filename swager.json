@@ -203,6 +203,17 @@
                             "properties":{
                                 "IdArticle":{
                                     "type":"integer"
+                                },
+                                "titre":{
+                                    "type":"string"
+                                },
+                                "contenu":{
+                                    "type":"string",
+                                    "exemple":"mon-contenu"
+                                },
+                                "IdUtilusateur":{
+                                    "type":"integer",
+                                    "exemple":"0221"
                                 }
                             }
                         }
