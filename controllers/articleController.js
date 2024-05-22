@@ -66,7 +66,7 @@ exports.deleteArticle = async (req, res) => {
         where: { IdArticle: IdArticle }
       });
       if (deleted) {
-        res.status(204).json();
+        res.status(200).json(deleted);
       } else {
         res.status(404).json({ error: 'Article not found' });
       }
