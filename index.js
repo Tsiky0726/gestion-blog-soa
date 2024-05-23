@@ -9,6 +9,12 @@ const Utilisateur = require('./models/utilisateur.js')
 const utilisateurRouter = require('./routes/utilisateurRoute.js')
 const articleRouter = require('./routes/articleRouter.js')
 
+
+const cors = require('cors')
+
+app.use(cors({
+  origin : "*"
+}))
 app.use(bodyparser.json());
 
 //Use routes
